@@ -2,24 +2,25 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-// const mongoose = require('mongoose');
 
-const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const jwtExpress = require('express-jwt');
 const config = require('./config/config'); // get our config file
 
-app.set('jwtSecret', config.secret); // secret letiable
-// const User = require('./app/models/user'); // get our mongoose model
+app.set('jwtSecret', config.secret); // store jwt secret key
+const authenticate = jwtExpress({
+  secret: config.secret,
+});
 
 const orm = require('./models/orm').orm;
 const utils = require('./utils/utils');
 
 app.use(morgan('dev'));
-// use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+const indexRoutes = require('./routes/index');
 const apiRoutes = require('./routes/api');
 
 orm.initialize(config.ormConfig, (err, models) => {
@@ -28,10 +29,10 @@ orm.initialize(config.ormConfig, (err, models) => {
   }
   // Tease out fully initialised models.
   app.models = models.collections;
-  const User = models.collections.user;
-  utils.initializeUser(User);
+  utils.initializeUser(app.models.user);
 
-  app.use('/api', apiRoutes);
+  app.use('/', indexRoutes);
+  app.use('/api', authenticate, apiRoutes);
 
   // =================================================================
   // start the server ================================================

@@ -3,7 +3,6 @@ const ormConfig = {
   adapters: {
     disk: sailsDisk,
   },
-
   connections: {
     default: {
       adapter: 'disk',
