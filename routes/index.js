@@ -18,8 +18,9 @@ router.post('/authenticate', (req, res) => {
         message: 'Authentication failed.',
       });
     } else {
+      console.log('This is the user found', user)
       // Check if password matches
-      if (user.password !== req.body.password) {
+      if (!user.comparePassword(req.body.password)) {
         res.json({
           success: false,
           message: 'Authentication failed.',

@@ -3,9 +3,9 @@
     "user": [
       {
         "firstName": "Jeremy",
-        "password": "password",
-        "createdAt": "2016-04-09T20:30:37.779Z",
-        "updatedAt": "2016-04-09T20:30:37.779Z",
+        "password": "$2a$08$w2cIm4M5vD9JJ1p3vsUqgO9Ulp5KM4sRZCc9SgzDedcjjcio5xQ1G",
+        "createdAt": "2016-04-09T20:54:20.212Z",
+        "updatedAt": "2016-04-09T20:54:20.212Z",
         "id": 1
       }
     ]
