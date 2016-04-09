@@ -3,31 +3,10 @@
     "user": [
       {
         "firstName": "Jeremy",
-        "lastName": "Castagno",
         "password": "password",
-        "createdAt": "2016-04-09T18:04:26.676Z",
-        "updatedAt": "2016-04-09T18:04:26.676Z",
+        "createdAt": "2016-04-09T20:30:37.779Z",
+        "updatedAt": "2016-04-09T20:30:37.779Z",
         "id": 1
-      },
-      {
-        "firstName": "Jeremy",
-        "lastName": "Castagno",
-        "password": "password",
-        "createdAt": "2016-04-09T18:04:30.479Z",
-        "updatedAt": "2016-04-09T18:04:30.479Z",
-        "id": 2
-      },
-      {
-        "firstName": "Blah",
-        "createdAt": "2016-04-09T18:38:23.742Z",
-        "updatedAt": "2016-04-09T18:38:23.742Z",
-        "id": 3
-      },
-      {
-        "firstName": "Jeremy",
-        "createdAt": "2016-04-09T18:48:03.879Z",
-        "updatedAt": "2016-04-09T18:48:03.879Z",
-        "id": 4
       }
     ]
   },
@@ -58,7 +37,7 @@
   },
   "counters": {
     "user": {
-      "id": 4
+      "id": 1
     }
   }
 }

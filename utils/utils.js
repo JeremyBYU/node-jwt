@@ -6,15 +6,14 @@ const initializeUser = (User) => {
     }
     return User.create({
       firstName: 'Jeremy',
-      lastName: 'Castagno',
       password: 'password',
     });
   })
   .then((user) => {
     console.log(user);
   })
-  .catch((err1) => {
-    console.error(err1);
+  .catch((err) => {
+    console.error(err);
   });
 };
 module.exports = {

@@ -29,17 +29,16 @@ orm.initialize(config.ormConfig, (err, models) => {
   }
   // Tease out fully initialised models.
   app.models = models.collections;
+  // Intialize First User (Jeremy, password)
   utils.initializeUser(app.models.user);
 
+  // Set Routes
   app.use('/', indexRoutes);
   app.use('/api', authenticate, apiRoutes);
 
-  // =================================================================
-  // start the server ================================================
-  // =================================================================
+  // Start the server
   app.listen(config.port);
   console.log('Magic happens at http://localhost:' + config.port);
-
 
   return true;
 });
