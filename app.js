@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+// Error Handling
+
 const indexRoutes = require('./routes/index');
 const apiRoutes = require('./routes/api');
 
@@ -35,6 +37,13 @@ orm.initialize(config.ormConfig, (err, models) => {
   // Set Routes
   app.use('/', indexRoutes);
   app.use('/api', authenticate, apiRoutes);
+  // Error Handler
+  app.use('/api', (err1, req, res, next) => {
+    if (err.name === 'UnauthorizedError' || 'jwt') {
+      res.status(401).json({ success: false, message: 'Authorization failed' });
+    }
+    next();
+  });
 
   // Start the server
   app.listen(config.port);
