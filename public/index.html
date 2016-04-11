@@ -49,7 +49,8 @@
   </nav>
 
   <div class="container">
-
+    <br>
+    <div class="alert alert-warning">Username:Jeremy <br>Password:password</div>
     <form class="form-signin">
       <h2 class="form-signin-heading">Please sign in</h2>
       <label for="firstName" class="sr-only">First Name</label>
@@ -66,6 +67,7 @@
         <textarea class="form-control" id="token" name="name" rows="3">
 
         </textarea>
+        <button id="startAPI" class="btn btn-lg btn-primary btn-block">Make API request with Token</button>
         <button id="startSocket" class="btn btn-lg btn-primary btn-block">Initiate Socket Connection with Token</button>
       </div>
     </form>
@@ -75,7 +77,7 @@
     <form>
       <div class="form-group">
         <label for="">Your Message</label>
-        <textarea class="form-control" id="socket" name="name" rows="3">
+        <textarea class="form-control" id="message" name="name" rows="3">
 
         </textarea>
       </div>

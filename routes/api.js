@@ -4,7 +4,10 @@ const router = express.Router(); // eslint-disable-line
 
 /* GET users listing. */
 router.get('/', (req, res) => {
-  res.send('respond with a secret resource');
+  res.json({
+    success: true,
+    message: 'You hit a Super Secret API Point by using your token!',
+  });
 });
 
 module.exports = router;

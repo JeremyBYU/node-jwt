@@ -27,10 +27,14 @@ $(document).ready(() => {
     e.preventDefault();
     beginSocketConnection($('#token').val());
   });
+  $('#startAPI').click((e) => {
+    e.preventDefault();
+    beginAPIRequest($('#token').val());
+  });
 
   $('#socketBtn').click((e) => {
     e.preventDefault();
-    var message = $('#socket').val();
+    var message = $('#message').val();
     if (socket) {
       console.log('trying to send message');
       socket.emit('message', message);
@@ -44,10 +48,26 @@ function beginSocketConnection(token) {
   socket = io.connect('http://localhost:8080');
   socket.on('connect', () => {
     socket.on('authenticated', () => {
-      $('#socket').val('Im authenticated using jwt for socket io!. You can now type things in here and broadcast messages!!');
+      $('#message').val('Im authenticated using jwt for socket io!. You can now type things in here and broadcast messages!!');
       console.log('authentiacted!');
     })
     .emit('authenticate', { token: token }); //send the jwt
     console.log('Trying to authenticate...');
+  });
+}
+function beginAPIRequest(token) {
+  $.ajax({
+    method: 'GET',
+    url: '/api/',
+    headers: {
+      authorization: 'Bearer ' + token,
+    },
+  })
+  .done((msg) => {
+    if (msg.success) {
+      $('#message').val(msg.message);
+    } else {
+        $('#token').val('Failed to Authenticate');
+    }
   });
 }
