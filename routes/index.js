@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router(); // eslint-disable-line
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const path = require('path');
+const _ = require('lodash');
 // const User = require('../models/User.js');
 
 /* GET users listing. */
@@ -27,8 +28,7 @@ router.post('/authenticate', (req, res) => {
           message: 'Authentication failed.',
         });
       } else {
-        // TODO dont include user password, remove it
-        const token = jwt.sign(user, req.app.get('jwtSecret'), {
+        const token = jwt.sign(_.omit(user, 'password'), req.app.get('jwtSecret'), {
           expiresIn: 86400, // expires in 24 hours
         });
 
