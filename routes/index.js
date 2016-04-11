@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router(); // eslint-disable-line
 const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const path = require('path');
 // const User = require('../models/User.js');
 
 /* GET users listing. */
 router.get('/', (req, res) => {
-  res.send('respond with an open resource');
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 router.post('/authenticate', (req, res) => {

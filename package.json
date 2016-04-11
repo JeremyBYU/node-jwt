@@ -16,6 +16,7 @@
     "jsonwebtoken": "^5.7.0",
     "morgan": "^1.7.0",
     "sails-disk": "^0.10.9",
+    "socket.io": "^1.4.5",
     "waterline": "^0.12.1"
   },
   "devDependencies": {

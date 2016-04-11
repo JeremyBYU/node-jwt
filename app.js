@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+// Server static files
+app.use(express.static('public'));
 
 // Error Handling
 
