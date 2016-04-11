@@ -51,6 +51,12 @@ function beginSocketConnection(token) {
       $('#message').val('Im authenticated using jwt for socket io!. You can now type things in here and broadcast messages!!');
       console.log('authentiacted!');
     })
+    socket.on('unauthorized', function (error) {
+      if (error.data.type == "UnauthorizedError" || error.data.code == "invalid_token") {
+        $('#message').val('Bad Authentication for Socket IO! Wrong Token?');
+        console.log("Bad Authentication for Socket IO! Wrong Token?");
+      }
+    })
     .emit('authenticate', { token: token }); //send the jwt
     console.log('Trying to authenticate...');
   });
