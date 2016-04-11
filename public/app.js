@@ -73,7 +73,10 @@ function beginAPIRequest(token) {
     if (msg.success) {
       $('#message').val(msg.message);
     } else {
-        $('#token').val('Failed to Authenticate');
+      $('#message').val('Failed to Get API message');
     }
+  })
+  .fail((msg) => {
+    $('#message').val('Failed to Get API message' + JSON.stringify(msg));
   });
 }
